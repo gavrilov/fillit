@@ -3,22 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rabduras <rabduras@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kgavrilo <kgavrilo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/16 21:32:24 by rabduras          #+#    #+#             */
-/*   Updated: 2019/11/01 13:56:22 by rabduras         ###   ########.fr       */
+/*   Updated: 2019/11/01 15:13:38 by kgavrilo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
-# define BUFF_SIZE 256
-# define FD_SIZE 256
+# define BUFF_SIZE 32
 # include <stdlib.h>
 # include <string.h>
 # include <unistd.h>
 # include <sys/types.h>
 # include <sys/uio.h>
+# include <fcntl.h>
 
 typedef struct		s_list
 {
@@ -26,6 +26,13 @@ typedef struct		s_list
 	size_t			content_size;
 	struct s_list	*next;
 }					t_list;
+
+typedef struct				s_fd_list
+{
+	int						fd;
+	char					*rmndr;
+	struct s_fd_list		*next;
+}							t_fd_list;
 
 int					ft_atoi(const char *str);
 void				ft_bzero(void *s, size_t n);
