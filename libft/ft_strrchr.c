@@ -1,20 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fillit.h                                           :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rabduras <rabduras@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/29 19:55:21 by kgavrilo          #+#    #+#             */
-/*   Updated: 2019/11/01 13:51:20 by rabduras         ###   ########.fr       */
+/*   Created: 2019/09/21 16:48:02 by rabduras          #+#    #+#             */
+/*   Updated: 2019/09/21 18:16:46 by rabduras         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FILLIT_H
-# define FILLIT_H
-# include <stdlib.h>
-# include <string.h>
-# include <fcntl.h>
-# include <unistd.h>
+#include "libft.h"
 
-#endif
+char	*ft_strrchr(const char *s, int c)
+{
+	int i;
+	int last_index;
+
+	i = 0;
+	last_index = -1;
+	c = (char)c;
+	while (s[i])
+	{
+		if (s[i] == c)
+			last_index = i;
+		i++;
+	}
+	if (c == '\0')
+		return ((char*)&s[i]);
+	if (last_index != -1)
+		return ((char*)&s[last_index]);
+	return (NULL);
+}

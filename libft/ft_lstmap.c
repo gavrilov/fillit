@@ -1,20 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fillit.h                                           :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rabduras <rabduras@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/29 19:55:21 by kgavrilo          #+#    #+#             */
-/*   Updated: 2019/11/01 13:51:20 by rabduras         ###   ########.fr       */
+/*   Created: 2019/09/24 12:24:27 by rabduras          #+#    #+#             */
+/*   Updated: 2019/09/24 14:44:46 by rabduras         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FILLIT_H
-# define FILLIT_H
-# include <stdlib.h>
-# include <string.h>
-# include <fcntl.h>
-# include <unistd.h>
+#include "libft.h"
 
-#endif
+t_list	*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
+{
+	t_list *res;
+
+	if (lst != NULL)
+	{
+		res = (t_list*)malloc(sizeof(t_list));
+		if (res != NULL)
+		{
+			res = f(lst);
+			res->next = ft_lstmap(lst->next, f);
+			return (res);
+		}
+		return (NULL);
+	}
+	return (NULL);
+}

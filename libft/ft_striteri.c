@@ -1,20 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fillit.h                                           :+:      :+:    :+:   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rabduras <rabduras@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/29 19:55:21 by kgavrilo          #+#    #+#             */
-/*   Updated: 2019/11/01 13:51:20 by rabduras         ###   ########.fr       */
+/*   Created: 2019/09/21 11:55:08 by rabduras          #+#    #+#             */
+/*   Updated: 2019/09/28 11:21:10 by rabduras         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FILLIT_H
-# define FILLIT_H
-# include <stdlib.h>
-# include <string.h>
-# include <fcntl.h>
-# include <unistd.h>
+#include "libft.h"
 
-#endif
+void	ft_striteri(char *s, void (*f)(unsigned int, char *))
+{
+	unsigned int i;
+
+	if (!s || !f)
+		return ;
+	i = 0;
+	while (s[i])
+	{
+		f(i, &s[i]);
+		i++;
+	}
+}

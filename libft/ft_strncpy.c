@@ -1,20 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fillit.h                                           :+:      :+:    :+:   */
+/*   ft_strncpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rabduras <rabduras@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/29 19:55:21 by kgavrilo          #+#    #+#             */
-/*   Updated: 2019/11/01 13:51:20 by rabduras         ###   ########.fr       */
+/*   Created: 2019/09/17 19:32:32 by rabduras          #+#    #+#             */
+/*   Updated: 2019/09/20 20:10:42 by rabduras         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FILLIT_H
-# define FILLIT_H
-# include <stdlib.h>
-# include <string.h>
-# include <fcntl.h>
-# include <unistd.h>
+#include "libft.h"
 
-#endif
+char	*ft_strncpy(char *dst, const char *src, size_t len)
+{
+	size_t i;
+
+	i = 0;
+	while (i < len)
+	{
+		if (src[i] != '\0')
+			dst[i] = src[i];
+		else
+			break ;
+		i++;
+	}
+	while (i < len)
+		dst[i++] = '\0';
+	return (dst);
+}

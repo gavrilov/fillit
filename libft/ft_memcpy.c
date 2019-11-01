@@ -1,20 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fillit.h                                           :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rabduras <rabduras@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/29 19:55:21 by kgavrilo          #+#    #+#             */
-/*   Updated: 2019/11/01 13:51:20 by rabduras         ###   ########.fr       */
+/*   Created: 2019/09/17 18:18:43 by rabduras          #+#    #+#             */
+/*   Updated: 2019/09/20 19:34:26 by rabduras         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FILLIT_H
-# define FILLIT_H
-# include <stdlib.h>
-# include <string.h>
-# include <fcntl.h>
-# include <unistd.h>
+#include "libft.h"
 
-#endif
+void	*ft_memcpy(void *dst, const void *src, size_t n)
+{
+	size_t			i;
+	char			*d;
+	const char		*s;
+
+	i = 0;
+	d = (char*)dst;
+	s = (const char*)src;
+	if (!d && !s)
+		return (NULL);
+	while (i < n)
+	{
+		d[i] = s[i];
+		i++;
+	}
+	return (dst);
+}

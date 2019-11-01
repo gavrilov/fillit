@@ -1,20 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fillit.h                                           :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rabduras <rabduras@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/29 19:55:21 by kgavrilo          #+#    #+#             */
-/*   Updated: 2019/11/01 13:51:20 by rabduras         ###   ########.fr       */
+/*   Created: 2019/09/19 11:52:23 by rabduras          #+#    #+#             */
+/*   Updated: 2019/09/27 14:50:22 by rabduras         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FILLIT_H
-# define FILLIT_H
-# include <stdlib.h>
-# include <string.h>
-# include <fcntl.h>
-# include <unistd.h>
+#include "libft.h"
 
-#endif
+int		ft_strncmp(const char *s1, const char *s2, size_t n)
+{
+	size_t i;
+
+	if (n == 0)
+		return (0);
+	i = 0;
+	while (i + 1 < n && s1[i] && s2[i])
+	{
+		if (s1[i] != s2[i])
+			return ((unsigned char)(s1[i]) - (unsigned char)(s2[i]));
+		i++;
+	}
+	return ((unsigned char)(s1[i]) - (unsigned char)(s2[i]));
+}

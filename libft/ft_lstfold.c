@@ -1,20 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fillit.h                                           :+:      :+:    :+:   */
+/*   ft_lstfold.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rabduras <rabduras@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/29 19:55:21 by kgavrilo          #+#    #+#             */
-/*   Updated: 2019/11/01 13:51:20 by rabduras         ###   ########.fr       */
+/*   Created: 2019/09/28 16:53:10 by rabduras          #+#    #+#             */
+/*   Updated: 2019/09/28 17:25:28 by rabduras         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FILLIT_H
-# define FILLIT_H
-# include <stdlib.h>
-# include <string.h>
-# include <fcntl.h>
-# include <unistd.h>
+#include "libft.h"
 
-#endif
+int		ft_lstfold(t_list *lst, int (*f)(int, int))
+{
+	int res;
+
+	if (lst)
+		res = *(int*)lst->content;
+	else
+		return (0);
+	while (lst->next)
+	{
+		res = f(res, *(int*)lst->next->content);
+		lst = lst->next;
+	}
+	return (res);
+}
