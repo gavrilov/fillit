@@ -1,3 +1,5 @@
 /libft
 *.o
 fillit
+.vscode
+.gitignore
