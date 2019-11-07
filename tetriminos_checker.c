@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tetriminos_checker.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rabduras <rabduras@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kgavrilo <kgavrilo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 12:41:37 by kgavrilo          #+#    #+#             */
-/*   Updated: 2019/11/06 19:36:23 by rabduras         ###   ########.fr       */
+/*   Updated: 2019/11/06 19:44:10 by kgavrilo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,12 +64,12 @@ static int		check_figure(char *line, int *hashes, int *min, int *max)
 				in_range = 1;
 				if (temp == -1)
 					*min = i;
-				*hashes++;
+				*hashes += 1;
 			}
 			else if (temp == -1 || temp == i)
 			{
 				temp = i + 1;
-				*hashes++;
+				*hashes += 1;
 			}
 			else
 				return (0);
@@ -84,12 +84,12 @@ static int		check_figure(char *line, int *hashes, int *min, int *max)
 ** Return True if it is correct
 */
 
-int		check_tetriminos_file(char *filename)
+int				check_tetriminos_file(char *filename)
 {
 	int		fd;
 	char	*line;
 	int		count_lines;
-	int 	hashes;
+	int		hashes;
 	int		range[2];
 
 	fd = open(filename, O_RDONLY);
@@ -103,9 +103,9 @@ int		check_tetriminos_file(char *filename)
 		while (get_next_line(fd, &line) > 0)
 		{
 			if (!(check_length(line, ++count_lines) && check_chars(line)))
-				return (0);
+				printf("Wrong1!");
 			if (!(check_figure(line, &hashes, &range[0], &range[1])))
-				return (0);
+				printf("Wrong2!");
 		}
 	}
 	close(fd);
