@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tetriminos_checker.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rabduras <rabduras@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kgavrilo <kgavrilo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 12:41:37 by kgavrilo          #+#    #+#             */
-/*   Updated: 2019/11/06 22:35:47 by rabduras         ###   ########.fr       */
+/*   Updated: 2019/11/07 11:51:11 by kgavrilo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,11 @@ static int		check_chars(char *line)
 	}
 	return (1);
 }
+
+/*
+** Function to validate shape of Tetriminos
+** Return True if shape is correct
+*/
 
 static int		check_figure(char *line, int *hashes, int *min, int *max)
 {
