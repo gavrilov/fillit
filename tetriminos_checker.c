@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tetriminos_checker.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kgavrilo <kgavrilo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rabduras <rabduras@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 12:41:37 by kgavrilo          #+#    #+#             */
-/*   Updated: 2019/11/06 19:44:10 by kgavrilo         ###   ########.fr       */
+/*   Updated: 2019/11/06 22:35:47 by rabduras         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,25 +58,20 @@ static int		check_figure(char *line, int *hashes, int *min, int *max)
 	{
 		if (line[i] == '#')
 		{
-			if (*hashes == 0 || (line[i] >= *min && line[i] <= *max))
-			{
-				temp = i + 1;
+			if (*hashes == 0 || (i >= *min && i <= *max && temp == -1)
+			|| (i >= *min && i <= *max && temp == i))
 				in_range = 1;
-				if (temp == -1)
-					*min = i;
-				*hashes += 1;
-			}
-			else if (temp == -1 || temp == i)
-			{
-				temp = i + 1;
-				*hashes += 1;
-			}
-			else
+			else if (temp != -1 && temp != i)
 				return (0);
+			if (temp == -1)
+				*min = i;
+			temp = i + 1;
+			*hashes += 1;
 		}
 	}
 	*max = temp - 1;
-	return (in_range);
+	return ((in_range == *hashes || in_range
+	|| (*hashes == 4 && temp == -1)) && *hashes < 5);
 }
 
 /*
@@ -97,15 +92,20 @@ int				check_tetriminos_file(char *filename)
 	{
 		count_lines = 0;
 		line = NULL;
-		hashes = 0;
 		range[0] = 0;
 		range[1] = 0;
+		hashes = 0;
 		while (get_next_line(fd, &line) > 0)
 		{
 			if (!(check_length(line, ++count_lines) && check_chars(line)))
-				printf("Wrong1!");
+				return (0);
+			if (count_lines % 5 == 0)
+			{
+				hashes = 0;
+				continue;
+			}
 			if (!(check_figure(line, &hashes, &range[0], &range[1])))
-				printf("Wrong2!");
+				return (0);
 		}
 	}
 	close(fd);
