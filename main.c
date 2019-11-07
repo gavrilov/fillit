@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: konst <konst@student.42.fr>                +#+  +:+       +#+        */
+/*   By: kgavrilo <kgavrilo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/29 19:40:57 by kgavrilo          #+#    #+#             */
-/*   Updated: 2019/11/01 23:24:26 by konst            ###   ########.fr       */
+/*   Updated: 2019/11/06 12:53:38 by kgavrilo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ int		main(int argc, char **argv)
 	else
 	{
 		ft_putendl(argv[1]);
+		check_tetriminos_file(argv[1]);
 	}
 	return (0);
 }

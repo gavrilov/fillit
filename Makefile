@@ -3,17 +3,17 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: rabduras <rabduras@student.42.fr>          +#+  +:+       +#+         #
+#    By: kgavrilo <kgavrilo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/29 19:41:05 by kgavrilo          #+#    #+#              #
-#    Updated: 2019/11/01 14:12:58 by rabduras         ###   ########.fr        #
+#    Updated: 2019/11/06 15:40:28 by kgavrilo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = fillit
 FLAGS = -Wall -Wextra -Werror -I./
-SRC = main.c
-OBJ = main.o
+SRC = main.c tetriminos_checker.c
+OBJ = main.o tetriminos_checker.o
 
 all: $(NAME)
 
@@ -31,3 +31,9 @@ fclean: clean
 	rm -f $(NAME)
 
 re:	fclean all
+
+build:
+	rm -f $(OBJ)
+	rm -f $(NAME)
+	gcc $(FLAGS) -c $(SRC)
+	gcc $(OBJ) -o $(NAME) -L libft -lft
