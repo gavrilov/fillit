@@ -6,7 +6,7 @@
 #    By: kgavrilo <kgavrilo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/29 19:41:05 by kgavrilo          #+#    #+#              #
-#    Updated: 2019/11/06 15:40:28 by kgavrilo         ###   ########.fr        #
+#    Updated: 2019/11/06 19:52:17 by kgavrilo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,5 +35,5 @@ re:	fclean all
 build:
 	rm -f $(OBJ)
 	rm -f $(NAME)
-	gcc $(FLAGS) -c $(SRC)
+	gcc $(FLAGS) -c $(SRC) -g
 	gcc $(OBJ) -o $(NAME) -L libft -lft
