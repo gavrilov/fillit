@@ -14,20 +14,8 @@
 			"cwd": "${workspaceFolder}",
 			"environment": [],
 			"externalConsole": false,
-			"MIMode": "lldb"
-		},
-		{
-			"name": "gcc build and debug active file",
-			"type": "cppdbg",
-			"request": "launch",
-			"program": "${fileDirname}/${fileBasenameNoExtension}",
-			"args": [],
-			"stopAtEntry": false,
-			"cwd": "${workspaceFolder}",
-			"environment": [],
-			"externalConsole": false,
 			"MIMode": "lldb",
-			"preLaunchTask": "gcc build active file"
+			"preLaunchTask": "makefile run build"
 		}
 	]
 }
