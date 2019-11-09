@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fillit.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kgavrilo <kgavrilo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rabduras <rabduras@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/29 19:55:21 by kgavrilo          #+#    #+#             */
-/*   Updated: 2019/11/06 19:21:44 by kgavrilo         ###   ########.fr       */
+/*   Updated: 2019/11/07 17:01:12 by rabduras         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,13 @@
 # include <unistd.h>
 # include "libft/libft.h"
 
-int		check_tetriminos_file(char *filename);
+typedef struct			s_tetrimino
+{
+	char 				**data;
+	struct s_tetrimino	*next;
+}						t_tetrimino;
+
+int						check_tetriminos_file(char *filename);
+t_tetrimino				*save_tetriminos(char *filename);
 
 #endif
