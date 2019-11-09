@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tetriminos_checker.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kgavrilo <kgavrilo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rabduras <rabduras@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 12:41:37 by kgavrilo          #+#    #+#             */
-/*   Updated: 2019/11/07 15:03:13 by kgavrilo         ###   ########.fr       */
+/*   Updated: 2019/11/08 11:18:47 by rabduras         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,10 +107,11 @@ int				check_tetriminos_file(char *filename)
 		hashes = 0;
 		while (get_next_line(fd, &line) > 0)
 		{
-			if (!(check_length(line, ++lines, &hashes) && check_chars(line)))
+			if (!(check_chars(line) && check_length(line, ++lines, &hashes)))
 				return (0);
 			if (!(check_figure(line, &hashes, &range[0], &range[1])))
 				return (0);
+			//ft_strdel(line); add freeing the line
 		}
 		close(fd);
 		return (1);
