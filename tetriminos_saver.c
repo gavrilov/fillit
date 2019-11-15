@@ -6,7 +6,7 @@
 /*   By: kgavrilo <kgavrilo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/13 14:02:07 by rabduras          #+#    #+#             */
-/*   Updated: 2019/11/15 10:01:19 by kgavrilo         ###   ########.fr       */
+/*   Updated: 2019/11/15 10:36:27 by kgavrilo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 
 void					delete_tetriminos(t_tetriminos *tetriminos)
 {
-	t_tetriminos *temp;
+	t_tetriminos		*temp;
 
 	while (tetriminos)
 	{
@@ -34,9 +34,9 @@ void					delete_tetriminos(t_tetriminos *tetriminos)
 
 static t_tetriminos		*align_top_left(t_tetriminos *tetriminos)
 {
-	int i;
-	int	x_min;
-	int	y_min;
+	int					i;
+	int					x_min;
+	int					y_min;
 
 	i = 2;
 	x_min = tetriminos->coords[0];
@@ -66,10 +66,10 @@ static t_tetriminos		*align_top_left(t_tetriminos *tetriminos)
 
 static t_tetriminos		*create_tetriminos(char *str, char letter)
 {
-	int				i;
-	int				x;
-	int				y;
-	t_tetriminos	*tetriminos;
+	int					i;
+	int					x;
+	int					y;
+	t_tetriminos		*tetriminos;
 
 	if (!(tetriminos = (t_tetriminos*)malloc(sizeof(t_tetriminos))))
 		return (NULL);
@@ -98,10 +98,10 @@ static t_tetriminos		*create_tetriminos(char *str, char letter)
 
 t_tetriminos			*save_tetriminos(char *str)
 {
-	int				i;
-	char			letter;
-	t_tetriminos	*first;
-	t_tetriminos	*current;
+	int					i;
+	char				letter;
+	t_tetriminos		*first;
+	t_tetriminos		*current;
 
 	i = 0;
 	letter = 'A';

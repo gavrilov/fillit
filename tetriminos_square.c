@@ -6,7 +6,7 @@
 /*   By: kgavrilo <kgavrilo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/13 18:22:00 by rabduras          #+#    #+#             */
-/*   Updated: 2019/11/15 10:29:16 by kgavrilo         ###   ########.fr       */
+/*   Updated: 2019/11/15 10:37:17 by kgavrilo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 
 static int	count_tetriminos(t_tetriminos *tetriminos)
 {
-	int figures;
+	int		figures;
 
 	figures = 0;
 	while (tetriminos)
@@ -35,7 +35,7 @@ static int	count_tetriminos(t_tetriminos *tetriminos)
 
 void		delete_square(char **square, int size)
 {
-	int i;
+	int		i;
 
 	i = -1;
 	while (++i < size)

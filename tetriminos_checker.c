@@ -6,7 +6,7 @@
 /*   By: kgavrilo <kgavrilo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 12:41:37 by kgavrilo          #+#    #+#             */
-/*   Updated: 2019/11/15 09:55:05 by kgavrilo         ###   ########.fr       */
+/*   Updated: 2019/11/15 10:35:57 by kgavrilo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 
 static char		*join_lines(char *line, char *prevlines)
 {
-	char *temp;
+	char		*temp;
 
 	temp = ft_strdup(prevlines);
 	ft_strdel(&prevlines);
@@ -35,8 +35,8 @@ static char		*join_lines(char *line, char *prevlines)
 
 static int		c_connects(char *str)
 {
-	int i;
-	int connects;
+	int			i;
+	int			connects;
 
 	i = -1;
 	connects = 0;
@@ -64,7 +64,7 @@ static int		c_connects(char *str)
 
 static int		check_figure(char *line, char *res, int *hashes, int lines)
 {
-	int	len;
+	int			len;
 
 	len = -1;
 	while (line[++len])
@@ -95,10 +95,10 @@ static int		check_figure(char *line, char *res, int *hashes, int lines)
 
 char			*check_tetriminos_file(char *filename)
 {
-	int		fd;
-	int		counters[2];
-	char	*line;
-	char	*res;
+	int			fd;
+	int			counters[2];
+	char		*line;
+	char		*res;
 
 	fd = open(filename, O_RDONLY);
 	if (fd < 2)

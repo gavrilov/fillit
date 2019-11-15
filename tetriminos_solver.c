@@ -6,7 +6,7 @@
 /*   By: kgavrilo <kgavrilo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/13 15:04:36 by rabduras          #+#    #+#             */
-/*   Updated: 2019/11/15 10:29:23 by kgavrilo         ###   ########.fr       */
+/*   Updated: 2019/11/15 10:37:04 by kgavrilo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,9 @@ static int	tetriminos_fits(t_tetriminos *tetriminos, char coord, int size)
 
 static int	overlap(t_tetriminos *tetriminos, char **square)
 {
-	int i;
-	int x;
-	int y;
+	int		i;
+	int		x;
+	int		y;
 
 	i = 0;
 	while (i < 8)
@@ -59,9 +59,9 @@ static int	overlap(t_tetriminos *tetriminos, char **square)
 
 void		put_tetriminos(t_tetriminos *tetriminos, char **square, char letter)
 {
-	int i;
-	int x;
-	int y;
+	int		i;
+	int		x;
+	int		y;
 
 	i = 0;
 	while (i < 8)
