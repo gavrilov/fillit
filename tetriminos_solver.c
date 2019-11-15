@@ -6,7 +6,7 @@
 /*   By: rabduras <rabduras@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/13 15:04:36 by rabduras          #+#    #+#             */
-/*   Updated: 2019/11/14 15:12:15 by rabduras         ###   ########.fr       */
+/*   Updated: 2019/11/14 20:30:19 by rabduras         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,16 @@
 static int	tetriminos_fits(t_tetriminos *tetriminos, char coord, int size)
 {
 	if (coord == 'y')
+	{
 		return ((tetriminos->coords[1] + tetriminos->y_offset < size) &&
 		(tetriminos->coords[3] + tetriminos->y_offset < size) &&
 		(tetriminos->coords[5] + tetriminos->y_offset < size) &&
 		(tetriminos->coords[7] + tetriminos->y_offset < size));
+	}
 	return ((tetriminos->coords[0] + tetriminos->x_offset < size) &&
-		(tetriminos->coords[2] + tetriminos->x_offset < size) &&
-		(tetriminos->coords[4] + tetriminos->x_offset < size) &&
-		(tetriminos->coords[6] + tetriminos->x_offset < size));
+	(tetriminos->coords[2] + tetriminos->x_offset < size) &&
+	(tetriminos->coords[4] + tetriminos->x_offset < size) &&
+	(tetriminos->coords[6] + tetriminos->x_offset < size));
 }
 
 static int	overlap(t_tetriminos *tetriminos, char **square)
@@ -59,32 +61,32 @@ void		put_tetriminos(t_tetriminos *tetriminos, char **square, char letter)
 	}
 }
 
-static int		solve_in_cur_square(char **square, t_tetriminos *tetriminos, int size)
+static int	solve_in_cur_square(char **square, t_tetriminos *figure, int size)
 {
-	if (tetriminos == NULL)
+	if (figure == NULL)
 		return (1);
-	tetriminos->x_offset = 0;
-	tetriminos->y_offset = 0;
-	while (tetriminos_fits(tetriminos, 'y', size))
+	figure->x_offset = 0;
+	figure->y_offset = 0;
+	while (tetriminos_fits(figure, 'y', size))
 	{
-		while (tetriminos_fits(tetriminos, 'x', size))
+		while (tetriminos_fits(figure, 'x', size))
 		{
-			if (!overlap(tetriminos, square))
+			if (!overlap(figure, square))
 			{
-				put_tetriminos(tetriminos, square, tetriminos->letter);
-				if (solve_in_cur_square(square, tetriminos->next, size))
+				put_tetriminos(figure, square, figure->letter);
+				if (solve_in_cur_square(square, figure->next, size))
 					return (1);
-				put_tetriminos(tetriminos, square, '.');
+				put_tetriminos(figure, square, '.');
 			}
-			tetriminos->x_offset++;
+			figure->x_offset++;
 		}
-		tetriminos->x_offset = 0;
-		tetriminos->y_offset++;
+		figure->x_offset = 0;
+		figure->y_offset++;
 	}
 	return (0);
 }
 
-void			solve_tetriminos(t_tetriminos *tetriminos)
+void		solve_tetriminos(t_tetriminos *tetriminos)
 {
 	int		size;
 	char	**square;

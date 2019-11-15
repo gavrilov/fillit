@@ -6,13 +6,13 @@
 /*   By: rabduras <rabduras@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/13 14:02:07 by rabduras          #+#    #+#             */
-/*   Updated: 2019/11/14 15:17:49 by rabduras         ###   ########.fr       */
+/*   Updated: 2019/11/14 20:09:22 by rabduras         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-void	delete_tetriminos(t_tetriminos *tetriminos)
+void					delete_tetriminos(t_tetriminos *tetriminos)
 {
 	t_tetriminos *temp;
 
@@ -24,7 +24,7 @@ void	delete_tetriminos(t_tetriminos *tetriminos)
 	}
 }
 
-static t_tetriminos			*align_top_left(t_tetriminos *tetriminos)
+static t_tetriminos		*align_top_left(t_tetriminos *tetriminos)
 {
 	int i;
 	int	x_min;
@@ -51,14 +51,14 @@ static t_tetriminos			*align_top_left(t_tetriminos *tetriminos)
 	return (tetriminos);
 }
 
-static t_tetriminos			*create_tetriminos(char *str, char letter)
+static t_tetriminos		*create_tetriminos(char *str, char letter)
 {
 	int				i;
 	int				x;
 	int				y;
 	t_tetriminos	*tetriminos;
 
-	if ((tetriminos = (t_tetriminos*)malloc(sizeof(t_tetriminos))) == NULL)
+	if (!(tetriminos = (t_tetriminos*)malloc(sizeof(t_tetriminos))))
 		return (NULL);
 	i = -1;
 	x = 0;

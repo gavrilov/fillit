@@ -6,13 +6,13 @@
 /*   By: rabduras <rabduras@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/13 18:22:00 by rabduras          #+#    #+#             */
-/*   Updated: 2019/11/13 19:12:50 by rabduras         ###   ########.fr       */
+/*   Updated: 2019/11/14 20:06:13 by rabduras         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-static int		count_tetriminos(t_tetriminos *tetriminos)
+static int	count_tetriminos(t_tetriminos *tetriminos)
 {
 	int figures;
 
@@ -52,7 +52,7 @@ char		**create_square(int size)
 	return (square);
 }
 
-int		count_init_square(t_tetriminos *tetriminos)
+int			count_init_square(t_tetriminos *tetriminos)
 {
 	int figures;
 	int init_square;
@@ -64,7 +64,7 @@ int		count_init_square(t_tetriminos *tetriminos)
 	return (init_square);
 }
 
-void	print_square(char **square, int size)
+void		print_square(char **square, int size)
 {
 	int i;
 	int j;
