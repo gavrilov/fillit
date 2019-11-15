@@ -3,14 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   tetriminos_saver.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rabduras <rabduras@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kgavrilo <kgavrilo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/13 14:02:07 by rabduras          #+#    #+#             */
-/*   Updated: 2019/11/14 20:09:22 by rabduras         ###   ########.fr       */
+/*   Updated: 2019/11/15 10:01:19 by kgavrilo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
+
+/*
+** Function to delete tetriminos
+*/
 
 void					delete_tetriminos(t_tetriminos *tetriminos)
 {
@@ -23,6 +27,10 @@ void					delete_tetriminos(t_tetriminos *tetriminos)
 		tetriminos = temp;
 	}
 }
+
+/*
+** Function to move figure to up left corner
+*/
 
 static t_tetriminos		*align_top_left(t_tetriminos *tetriminos)
 {
@@ -51,6 +59,11 @@ static t_tetriminos		*align_top_left(t_tetriminos *tetriminos)
 	return (tetriminos);
 }
 
+/*
+** Function to create list tetriminos and allocate a lettter, save coordinates of #
+** Return list with tetrimino
+*/
+
 static t_tetriminos		*create_tetriminos(char *str, char letter)
 {
 	int				i;
@@ -77,6 +90,11 @@ static t_tetriminos		*create_tetriminos(char *str, char letter)
 	}
 	return (align_top_left(tetriminos));
 }
+
+/*
+** Function to save tetriminos and allocate a lettter
+** Return list of tetriminos
+*/
 
 t_tetriminos			*save_tetriminos(char *str)
 {

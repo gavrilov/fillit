@@ -3,14 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   tetriminos_checker.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rabduras <rabduras@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kgavrilo <kgavrilo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 12:41:37 by kgavrilo          #+#    #+#             */
-/*   Updated: 2019/11/14 19:57:46 by rabduras         ###   ########.fr       */
+/*   Updated: 2019/11/15 09:55:05 by kgavrilo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
+
+/*
+** Function to connect lines to each other
+** Return line
+*/
 
 static char		*join_lines(char *line, char *prevlines)
 {
@@ -22,6 +27,11 @@ static char		*join_lines(char *line, char *prevlines)
 	ft_strdel(&temp);
 	return (prevlines);
 }
+
+/*
+** Function to check connections of # with other #
+**
+*/
 
 static int		c_connects(char *str)
 {
