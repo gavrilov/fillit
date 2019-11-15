@@ -6,7 +6,7 @@
 /*   By: rabduras <rabduras@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 12:41:37 by kgavrilo          #+#    #+#             */
-/*   Updated: 2019/11/14 16:07:50 by rabduras         ###   ########.fr       */
+/*   Updated: 2019/11/14 16:43:46 by rabduras         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,9 @@ static int		check_figure(char *line, char *res, int *hashes, int lines)
 			return (0);
 		if (line[len] == '#')
 		{
-			(*hashes)++;
 			if (res[c * 4 - len] != '#' && line[len - 1] != '#' && hashes == 0)
 				return (0);
+			(*hashes)++;
 		}
 	}
 	if (lines % 5 == 0 && *hashes != 4)
@@ -64,20 +64,19 @@ static int		check_figure(char *line, char *res, int *hashes, int lines)
 char			*check_tetriminos_file(char *filename)
 {
 	int		fd;
-	int		hashes;
-	int		lines;
+	int		counters[2];
 	char	*line;
 	char	*res;
 
 	fd = open(filename, O_RDONLY);
 	if (fd < 2)
 		return (NULL);
-	hashes = 0;
-	lines = 0;
+	counters[0] = 0;
+	counters[1] = 0;
 	res = ft_strnew(0);
 	while (get_next_line(fd, &line) > 0)
 	{
-		if (!check_figure(line, res, &hashes, ++lines))
+		if (!check_figure(line, res, &counters[1], ++counters[0]))
 		{
 			ft_strdel(&res);
 			return (NULL);
@@ -86,5 +85,7 @@ char			*check_tetriminos_file(char *filename)
 		ft_strdel(&line);
 	}
 	close(fd);
+	if (counters[0] % 5 != 0)
+		return (NULL);
 	return (res);
 }
