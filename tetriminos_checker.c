@@ -6,7 +6,7 @@
 /*   By: rabduras <rabduras@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 12:41:37 by kgavrilo          #+#    #+#             */
-/*   Updated: 2019/11/14 16:43:46 by rabduras         ###   ########.fr       */
+/*   Updated: 2019/11/14 19:28:28 by rabduras         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,30 @@ static char		*join_lines(char *line, char *prevlines)
 	return (prevlines);
 }
 
+static int		c_connects(char *str)
+{
+	int i;
+	int connects;
+
+	i = -1;
+	connects = 0;
+	while (++i < 16)
+	{
+		if (str[i] == '#')
+		{
+			if (i != 0 && str[i - 1] == '#')
+				connects++;
+			if (i + 1 < 16 && str[i + 1] == '#')
+				connects++;
+			if (i >= 4 && str[i - 4] == '#')
+				connects++;
+			if (i + 4 < 16 && str[i + 4] == '#')
+				connects++;
+		}
+	}
+	return (connects == 6 || connects == 8);
+}
+
 /*
 ** Function to validate Tetriminos
 ** Return True if it is correct figure
@@ -30,26 +54,24 @@ static char		*join_lines(char *line, char *prevlines)
 
 static int		check_figure(char *line, char *res, int *hashes, int lines)
 {
-	int c;
 	int	len;
 
 	len = -1;
-	c = (lines - 1 % 5 == 0) ? lines - 2 : lines - 1;
 	while (line[++len])
 	{
 		if (line[len] != '#' && line[len] != '.')
 			return (0);
 		if (line[len] == '#')
-		{
-			if (res[c * 4 - len] != '#' && line[len - 1] != '#' && hashes == 0)
-				return (0);
 			(*hashes)++;
-		}
 	}
 	if (lines % 5 == 0 && *hashes != 4)
 		return (0);
 	if (lines % 5 == 0 && *hashes == 4)
+	{
+		if (c_connects(&res[ft_strlen(res) - 16]) == 0)
+			return (0);
 		*hashes = 0;
+	}
 	if ((len == 0 && lines % 5 == 0) || (len == 4 && lines % 5 != 0))
 		return (1);
 	return (0);
@@ -85,7 +107,7 @@ char			*check_tetriminos_file(char *filename)
 		ft_strdel(&line);
 	}
 	close(fd);
-	if (counters[0] % 5 != 0)
+	if (++counters[0] % 5 != 0 || c_connects(&res[ft_strlen(res) - 16]) == 0)
 		return (NULL);
 	return (res);
 }
