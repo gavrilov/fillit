@@ -6,7 +6,7 @@
 /*   By: kgavrilo <kgavrilo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 12:41:37 by kgavrilo          #+#    #+#             */
-/*   Updated: 2019/11/15 10:35:57 by kgavrilo         ###   ########.fr       */
+/*   Updated: 2019/11/15 10:39:20 by kgavrilo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ static char		*join_lines(char *line, char *prevlines)
 
 /*
 ** Function to check connections of # with other #
-**
 */
 
 static int		c_connects(char *str)

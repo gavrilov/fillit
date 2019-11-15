@@ -6,7 +6,7 @@
 /*   By: kgavrilo <kgavrilo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/13 14:02:07 by rabduras          #+#    #+#             */
-/*   Updated: 2019/11/15 10:36:27 by kgavrilo         ###   ########.fr       */
+/*   Updated: 2019/11/15 10:39:07 by kgavrilo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,8 @@ static t_tetriminos		*align_top_left(t_tetriminos *tetriminos)
 }
 
 /*
-** Function to create list tetriminos and allocate a lettter, save coordinates of #
+** Function to create list tetriminos and
+** allocate a lettter, save coordinates of #
 ** Return list with tetrimino
 */
 
