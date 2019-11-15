@@ -6,17 +6,17 @@
 /*   By: kgavrilo <kgavrilo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/29 19:55:21 by kgavrilo          #+#    #+#             */
-/*   Updated: 2019/11/15 10:29:31 by kgavrilo         ###   ########.fr       */
+/*   Updated: 2019/11/15 10:33:00 by kgavrilo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FILLIT_H
 # define FILLIT_H
+# include <fcntl.h>
+# include "libft/libft.h"
 # include <stdlib.h>
 # include <string.h>
-# include <fcntl.h>
 # include <unistd.h>
-# include "libft/libft.h"
 
 typedef struct			s_tetriminos
 {
@@ -28,12 +28,12 @@ typedef struct			s_tetriminos
 }						t_tetriminos;
 
 char					*check_tetriminos_file(char *filename);
-t_tetriminos			*save_tetriminos(char *str);
-void					solve_tetriminos(t_tetriminos *tetriminos);
+char					**create_square(int size);
 void					delete_square(char **square, int size);
 void					delete_tetriminos(t_tetriminos *tetriminos);
-char					**create_square(int size);
 int						init_square_size(t_tetriminos *tetriminos);
 void					print_square(char **square, int size);
+t_tetriminos			*save_tetriminos(char *str);
+void					solve_tetriminos(t_tetriminos *tetriminos);
 
 #endif
