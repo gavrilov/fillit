@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tetriminos_checker.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kgavrilo <kgavrilo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rabduras <rabduras@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 12:41:37 by kgavrilo          #+#    #+#             */
-/*   Updated: 2019/11/15 10:39:20 by kgavrilo         ###   ########.fr       */
+/*   Updated: 2019/11/15 12:15:34 by rabduras         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static char		*join_lines(char *line, char *prevlines)
 ** Function to check connections of # with other #
 */
 
-static int		c_connects(char *str)
+static int		count_bounds(char *str)
 {
 	int			i;
 	int			connects;
@@ -77,7 +77,7 @@ static int		check_figure(char *line, char *res, int *hashes, int lines)
 		return (0);
 	if (lines % 5 == 0 && *hashes == 4)
 	{
-		if (c_connects(&res[ft_strlen(res) - 16]) == 0)
+		if (count_bounds(&res[ft_strlen(res) - 16]) == 0)
 			return (0);
 		*hashes = 0;
 	}
@@ -116,7 +116,7 @@ char			*check_tetriminos_file(char *filename)
 		ft_strdel(&line);
 	}
 	close(fd);
-	if (++counters[0] % 5 != 0 || c_connects(&res[ft_strlen(res) - 16]) == 0)
+	if (++counters[0] % 5 != 0 || count_bounds(&res[ft_strlen(res) - 16]) == 0)
 		return (NULL);
 	return (res);
 }

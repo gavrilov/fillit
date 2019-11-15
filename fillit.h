@@ -3,20 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   fillit.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kgavrilo <kgavrilo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rabduras <rabduras@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/29 19:55:21 by kgavrilo          #+#    #+#             */
-/*   Updated: 2019/11/15 10:33:00 by kgavrilo         ###   ########.fr       */
+/*   Updated: 2019/11/15 12:13:25 by rabduras         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FILLIT_H
 # define FILLIT_H
-# include <fcntl.h>
 # include "libft/libft.h"
+# include <fcntl.h>
 # include <stdlib.h>
-# include <string.h>
-# include <unistd.h>
 
 typedef struct			s_tetriminos
 {
