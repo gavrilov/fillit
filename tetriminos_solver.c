@@ -3,14 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   tetriminos_solver.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rabduras <rabduras@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kgavrilo <kgavrilo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/13 15:04:36 by rabduras          #+#    #+#             */
-/*   Updated: 2019/11/14 20:30:19 by rabduras         ###   ########.fr       */
+/*   Updated: 2019/11/15 10:29:23 by kgavrilo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
+
+/*
+** Function to check if tetrimino fits in a field of a certain size
+*/
 
 static int	tetriminos_fits(t_tetriminos *tetriminos, char coord, int size)
 {
@@ -26,6 +30,10 @@ static int	tetriminos_fits(t_tetriminos *tetriminos, char coord, int size)
 	(tetriminos->coords[4] + tetriminos->x_offset < size) &&
 	(tetriminos->coords[6] + tetriminos->x_offset < size));
 }
+
+/*
+** Function to check overlaps between tetriminos
+*/
 
 static int	overlap(t_tetriminos *tetriminos, char **square)
 {
@@ -45,6 +53,10 @@ static int	overlap(t_tetriminos *tetriminos, char **square)
 	return (0);
 }
 
+/*
+** Function to put tetriminos on square
+*/
+
 void		put_tetriminos(t_tetriminos *tetriminos, char **square, char letter)
 {
 	int i;
@@ -60,6 +72,10 @@ void		put_tetriminos(t_tetriminos *tetriminos, char **square, char letter)
 		i += 2;
 	}
 }
+
+/*
+** Function to recursively find the solution in a field of a certain size
+*/
 
 static int	solve_in_cur_square(char **square, t_tetriminos *figure, int size)
 {
@@ -86,12 +102,16 @@ static int	solve_in_cur_square(char **square, t_tetriminos *figure, int size)
 	return (0);
 }
 
+/*
+** Function to solve tetriminous.
+*/
+
 void		solve_tetriminos(t_tetriminos *tetriminos)
 {
 	int		size;
 	char	**square;
 
-	size = count_init_square(tetriminos);
+	size = init_square_size(tetriminos);
 	square = create_square(size);
 	while (!solve_in_cur_square(square, tetriminos, size))
 	{

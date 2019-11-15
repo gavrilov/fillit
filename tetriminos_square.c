@@ -3,14 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   tetriminos_square.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rabduras <rabduras@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kgavrilo <kgavrilo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/13 18:22:00 by rabduras          #+#    #+#             */
-/*   Updated: 2019/11/14 20:06:13 by rabduras         ###   ########.fr       */
+/*   Updated: 2019/11/15 10:29:16 by kgavrilo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
+
+/*
+** Function to count tetriminous
+*/
 
 static int	count_tetriminos(t_tetriminos *tetriminos)
 {
@@ -25,6 +29,10 @@ static int	count_tetriminos(t_tetriminos *tetriminos)
 	return (figures);
 }
 
+/*
+** Function to delete square
+*/
+
 void		delete_square(char **square, int size)
 {
 	int i;
@@ -34,6 +42,10 @@ void		delete_square(char **square, int size)
 		ft_strdel(&square[i]);
 	ft_strdel(square);
 }
+
+/*
+** Function to create square
+*/
 
 char		**create_square(int size)
 {
@@ -52,22 +64,30 @@ char		**create_square(int size)
 	return (square);
 }
 
-int			count_init_square(t_tetriminos *tetriminos)
-{
-	int figures;
-	int init_square;
+/*
+** Function to find size of initial field
+*/
 
-	init_square = 2;
+int			init_square_size(t_tetriminos *tetriminos)
+{
+	int		figures;
+	int		square_size;
+
+	square_size = 2;
 	figures = count_tetriminos(tetriminos);
-	while (init_square * init_square < figures * 4)
-		init_square++;
-	return (init_square);
+	while (square_size * square_size < figures * 4)
+		square_size++;
+	return (square_size);
 }
+
+/*
+** Function to print square
+*/
 
 void		print_square(char **square, int size)
 {
-	int i;
-	int j;
+	int		i;
+	int		j;
 
 	i = -1;
 	while (++i < size)
