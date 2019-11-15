@@ -6,13 +6,14 @@
 #    By: rabduras <rabduras@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/29 19:41:05 by kgavrilo          #+#    #+#              #
-#    Updated: 2019/11/08 13:06:09 by rabduras         ###   ########.fr        #
+#    Updated: 2019/11/14 13:26:26 by rabduras         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = fillit
 FLAGS = -Wall -Wextra -Werror -I./
-SRC = main.c tetriminos_checker.c tetriminos_saver.c
+SRC = main.c tetriminos_checker.c tetriminos_saver.c tetriminos_solver.c \
+tetriminos_square.c
 LIBFT = libft/
 
 OBJ = $(SRC:.c=.o)
