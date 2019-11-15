@@ -3,3 +3,7 @@
 fillit
 .vscode
 .gitignore
+invalid_sample_all.fillit
+invalid_sample.fillit
+valid_sample.fillit
+valid_sample_all.fillit
