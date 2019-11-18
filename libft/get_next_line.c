@@ -3,89 +3,67 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kgavrilo <kgavrilo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rabduras <rabduras@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/09 16:08:43 by kgavrilo          #+#    #+#             */
-/*   Updated: 2019/11/01 15:11:56 by kgavrilo         ###   ########.fr       */
+/*   Created: 2019/09/30 10:20:54 by rabduras          #+#    #+#             */
+/*   Updated: 2019/11/18 13:57:43 by rabduras         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char			*check_rmndr(char *rmndr, char **line)
+int		get_remained_chars(char **remained, char **line, int fd, char *buff)
 {
-	char	*p_nl;
+	int		len;
+	char	*temp;
 
-	p_nl = NULL;
-	if (rmndr)
-		if ((p_nl = ft_strchr(rmndr, '\n')))
-		{
-			*p_nl = '\0';
-			*line = ft_strdup(rmndr);
-			ft_strcpy(rmndr, ++p_nl);
-		}
-		else
-		{
-			*line = ft_strdup(rmndr);
-			ft_strclr(rmndr);
-		}
-	else
-		*line = ft_strnew(1);
-	return (p_nl);
-}
-
-int				get_line(const int fd, char **line, char **rmndr)
-{
-	char			buf[BUFF_SIZE + 1];
-	int				n;
-	char			*p_nl;
-	char			*tmp;
-
-	if (read(fd, buf, 0) < 0)
-		return (-1);
-	p_nl = check_rmndr(*rmndr, line);
-	while (!p_nl && (n = read(fd, buf, BUFF_SIZE)))
+	len = -1;
+	temp = ft_strnew(0);
+	if (remained[fd] != NULL)
 	{
-		buf[n] = '\0';
-		if ((p_nl = ft_strchr(buf, '\n')))
-		{
-			*p_nl = '\0';
-			*rmndr = ft_strdup(++p_nl);
-		}
-		tmp = *line;
-		if (!(*line = ft_strjoin(*line, buf)) || n < 0)
-			return (-1);
-		ft_strdel(&tmp);
+		ft_strdel(&temp);
+		temp = ft_strdup(remained[fd]);
+		ft_strdel(&remained[fd]);
 	}
-	return (n || p_nl || ft_strlen(*line)) ? 1 : 0;
-}
-
-t_fd_list		*new_list(int fd)
-{
-	t_fd_list		*new;
-
-	new = (t_fd_list *)malloc(sizeof(t_fd_list));
-	new->fd = fd;
-	new->rmndr = NULL;
-	new->next = NULL;
-	return (new);
-}
-
-int				get_next_line(const int fd, char **line)
-{
-	static t_fd_list	*head;
-	t_fd_list			*tmp;
-
-	if (fd < 0 || line == NULL)
-		return (-1);
-	if (head == NULL)
-		head = new_list(fd);
-	tmp = head;
-	while (tmp->fd != fd)
+	remained[fd] = ft_strjoin(temp, buff);
+	ft_strdel(&temp);
+	while (remained[fd][++len] && remained[fd][len] != '\n')
+		;
+	if (remained[fd][len] == '\n')
 	{
-		if (tmp->next == NULL)
-			tmp->next = new_list(fd);
-		tmp = tmp->next;
+		*line = ft_strsub(remained[fd], 0, len);
+		temp = ft_strsub(remained[fd], ++len, ft_strlen(remained[fd]));
+		ft_strdel(&remained[fd]);
+		remained[fd] = ft_strdup(temp);
+		ft_strdel(&temp);
+		return (1);
 	}
-	return (get_line(tmp->fd, line, &tmp->rmndr));
+	return (0);
+}
+
+int		get_next_line(const int fd, char **line)
+{
+	int			br;
+	static char	*remained[FD_SIZE];
+	char		buff[BUFF_SIZE + 1];
+
+	if (fd < 0 || line == NULL || (read(fd, buff, 0)) < 0)
+		return (-1);
+	while ((br = read(fd, buff, BUFF_SIZE)) > 0)
+	{
+		buff[br] = '\0';
+		if (get_remained_chars(remained, line, fd, buff))
+			return (1);
+	}
+	if (remained[fd] != NULL && *remained[fd])
+	{
+		if (!get_remained_chars(remained, line, fd, ""))
+		{
+			*line = ft_strdup(remained[fd]);
+			ft_strdel(&remained[fd]);
+		}
+		return (1);
+	}
+	ft_strdel(&remained[fd]);
+	return (br);
 }

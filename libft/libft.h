@@ -6,7 +6,7 @@
 /*   By: rabduras <rabduras@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/16 21:32:24 by rabduras          #+#    #+#             */
-/*   Updated: 2019/11/14 20:19:06 by rabduras         ###   ########.fr       */
+/*   Updated: 2019/11/18 14:15:50 by rabduras         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <sys/types.h>
 # include <sys/uio.h>
 # include <fcntl.h>
+# define FD_SIZE 256
 
 typedef struct			s_list
 {
@@ -26,13 +27,6 @@ typedef struct			s_list
 	size_t				content_size;
 	struct s_list		*next;
 }						t_list;
-
-typedef struct			s_fd_list
-{
-	int					fd;
-	char				*rmndr;
-	struct s_fd_list	*next;
-}						t_fd_list;
 
 int						ft_atoi(const char *str);
 void					ft_bzero(void *s, size_t n);
