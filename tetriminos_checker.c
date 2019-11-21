@@ -6,7 +6,7 @@
 /*   By: rabduras <rabduras@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 12:41:37 by kgavrilo          #+#    #+#             */
-/*   Updated: 2019/11/15 16:25:32 by rabduras         ###   ########.fr       */
+/*   Updated: 2019/11/20 13:30:53 by rabduras         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ static char		*join_lines(char *line, char *prevlines)
 	ft_strdel(&prevlines);
 	prevlines = ft_strjoin(temp, line);
 	ft_strdel(&temp);
+	ft_strdel(&line);
 	return (prevlines);
 }
 
@@ -110,10 +111,10 @@ char			*check_tetriminos_file(char *filename)
 		if (!check_figure(line, res, &counters[1], ++counters[0]))
 		{
 			ft_strdel(&res);
+			ft_strdel(&line);
 			return (NULL);
 		}
 		res = join_lines(line, res);
-		ft_strdel(&line);
 	}
 	close(fd);
 	if (++counters[0] % 5 != 0 || check_bounds(&res[ft_strlen(res) - 16]) == 0)
