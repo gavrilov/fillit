@@ -6,7 +6,7 @@
 /*   By: rabduras <rabduras@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/13 15:04:36 by rabduras          #+#    #+#             */
-/*   Updated: 2019/11/21 16:36:17 by rabduras         ###   ########.fr       */
+/*   Updated: 2019/11/21 16:55:12 by rabduras         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,7 @@ static int	solve_in_cur_square(char **square, t_tetriminos *figure, int size)
 ** Function to solve tetriminous.
 */
 
-int		solve_tetriminos(t_tetriminos *tetriminos)
+int			solve_tetriminos(t_tetriminos *tetriminos)
 {
 	int		size;
 	char	**square;
