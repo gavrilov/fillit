@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tetriminos_square.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rabduras <rabduras@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kgavrilo <kgavrilo@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/13 18:22:00 by rabduras          #+#    #+#             */
-/*   Updated: 2019/11/21 16:26:19 by rabduras         ###   ########.fr       */
+/*   Updated: 2019/11/21 18:28:20 by kgavrilo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void		delete_square(char **square, int size)
 	i = -1;
 	while (++i < size)
 		ft_strdel(&square[i]);
-	ft_strdel(square);
+	free(square);
 }
 
 /*
@@ -58,7 +58,10 @@ char		**create_square(int size)
 	while (++i < size)
 	{
 		if ((square[i] = (char*)malloc(sizeof(char) * size)) == NULL)
+		{
+			free(square);
 			return (NULL);
+		}
 		ft_memset(square[i], '.', size);
 	}
 	return (square);

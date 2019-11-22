@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: rabduras <rabduras@student.42.fr>          +#+  +:+       +#+         #
+#    By: kgavrilo <kgavrilo@student.42.us.org>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/29 19:41:05 by kgavrilo          #+#    #+#              #
-#    Updated: 2019/11/18 12:53:58 by rabduras         ###   ########.fr        #
+#    Updated: 2019/11/21 18:30:04 by kgavrilo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,9 +36,3 @@ fclean: clean
 	make -C $(LIBFT) fclean
 
 re:	fclean all
-
-build:
-	rm -f $(OBJ)
-	rm -f $(NAME)
-	gcc $(FLAGS) -c $(SRC) -g
-	gcc $(OBJ) -o $(NAME) -L libft -lft
