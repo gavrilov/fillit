@@ -6,7 +6,7 @@
 /*   By: rabduras <rabduras@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/13 15:04:36 by rabduras          #+#    #+#             */
-/*   Updated: 2019/11/21 16:55:12 by rabduras         ###   ########.fr       */
+/*   Updated: 2019/11/21 18:32:40 by rabduras         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,7 +114,8 @@ int			solve_tetriminos(t_tetriminos *tetriminos)
 	size = init_square_size(tetriminos);
 	if (!size)
 		return (0);
-	square = create_square(size);
+	if (!(square = create_square(size)))
+		return (0);
 	while (!solve_in_cur_square(square, tetriminos, size))
 	{
 		delete_square(square, size);
