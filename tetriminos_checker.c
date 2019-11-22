@@ -6,7 +6,7 @@
 /*   By: rabduras <rabduras@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 12:41:37 by kgavrilo          #+#    #+#             */
-/*   Updated: 2019/11/20 13:30:53 by rabduras         ###   ########.fr       */
+/*   Updated: 2019/11/21 12:52:35 by rabduras         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,7 +117,7 @@ char			*check_tetriminos_file(char *filename)
 		res = join_lines(line, res);
 	}
 	close(fd);
-	if (++counters[0] % 5 != 0 || check_bounds(&res[ft_strlen(res) - 16]) == 0)
+	if (++counters[0] % 5 != 0 || !check_bounds(&res[ft_strlen(res) - 16]))
 		return (NULL);
 	return (res);
 }

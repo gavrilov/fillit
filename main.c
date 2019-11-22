@@ -6,7 +6,7 @@
 /*   By: rabduras <rabduras@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/29 19:40:57 by kgavrilo          #+#    #+#             */
-/*   Updated: 2019/11/14 15:25:22 by rabduras         ###   ########.fr       */
+/*   Updated: 2019/11/21 16:28:44 by rabduras         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,12 @@ int		main(int argc, char **argv)
 	}
 	tetriminos = save_tetriminos(res);
 	ft_strdel(&res);
-	solve_tetriminos(tetriminos);
+	if (!solve_tetriminos(tetriminos))
+	{
+		delete_tetriminos(tetriminos);
+		ft_putendl("error");
+		return (1);
+	}
 	delete_tetriminos(tetriminos);
 	return (0);
 }

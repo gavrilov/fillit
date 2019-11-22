@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tetriminos_solver.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kgavrilo <kgavrilo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rabduras <rabduras@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/13 15:04:36 by rabduras          #+#    #+#             */
-/*   Updated: 2019/11/15 10:37:04 by kgavrilo         ###   ########.fr       */
+/*   Updated: 2019/11/21 16:36:17 by rabduras         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,12 +106,14 @@ static int	solve_in_cur_square(char **square, t_tetriminos *figure, int size)
 ** Function to solve tetriminous.
 */
 
-void		solve_tetriminos(t_tetriminos *tetriminos)
+int		solve_tetriminos(t_tetriminos *tetriminos)
 {
 	int		size;
 	char	**square;
 
 	size = init_square_size(tetriminos);
+	if (!size)
+		return (0);
 	square = create_square(size);
 	while (!solve_in_cur_square(square, tetriminos, size))
 	{
@@ -120,4 +122,5 @@ void		solve_tetriminos(t_tetriminos *tetriminos)
 	}
 	print_square(square, size);
 	delete_square(square, size);
+	return (1);
 }

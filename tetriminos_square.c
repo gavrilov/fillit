@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tetriminos_square.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kgavrilo <kgavrilo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rabduras <rabduras@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/13 18:22:00 by rabduras          #+#    #+#             */
-/*   Updated: 2019/11/15 10:37:17 by kgavrilo         ###   ########.fr       */
+/*   Updated: 2019/11/21 16:26:19 by rabduras         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static int	count_tetriminos(t_tetriminos *tetriminos)
 		figures++;
 		tetriminos = tetriminos->next;
 	}
-	return (figures);
+	return (figures > 26) ? 0 : figures;
 }
 
 /*
@@ -75,6 +75,8 @@ int			init_square_size(t_tetriminos *tetriminos)
 
 	square_size = 2;
 	figures = count_tetriminos(tetriminos);
+	if (!figures)
+		return (0);
 	while (square_size * square_size < figures * 4)
 		square_size++;
 	return (square_size);
