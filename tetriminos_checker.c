@@ -6,7 +6,7 @@
 /*   By: rabduras <rabduras@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 12:41:37 by kgavrilo          #+#    #+#             */
-/*   Updated: 2019/11/21 12:52:35 by rabduras         ###   ########.fr       */
+/*   Updated: 2019/11/22 19:17:28 by rabduras         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static char		*join_lines(char *line, char *prevlines)
 ** Function to check bounds of # with other #
 */
 
-static int		check_bounds(char *str)
+static int		bounds(char *str)
 {
 	int			i;
 	int			bounds;
@@ -78,7 +78,7 @@ static int		check_figure(char *line, char *res, int *hashes, int lines)
 		return (0);
 	if (lines % 5 == 0 && *hashes == 4)
 	{
-		if (!check_bounds(&res[ft_strlen(res) - 16]))
+		if (!bounds(&res[ft_strlen(res) - 16]))
 			return (0);
 		*hashes = 0;
 	}
@@ -96,19 +96,19 @@ static int		check_figure(char *line, char *res, int *hashes, int lines)
 char			*check_tetriminos_file(char *filename)
 {
 	int			fd;
-	int			counters[2];
+	int			c[2];
 	char		*line;
 	char		*res;
 
 	fd = open(filename, O_RDONLY);
 	if (fd < 2)
 		return (NULL);
-	counters[0] = 0;
-	counters[1] = 0;
+	c[0] = 0;
+	c[1] = 0;
 	res = ft_strnew(0);
 	while (get_next_line(fd, &line) > 0)
 	{
-		if (!check_figure(line, res, &counters[1], ++counters[0]))
+		if (!check_figure(line, res, &c[1], ++c[0]))
 		{
 			ft_strdel(&res);
 			ft_strdel(&line);
@@ -117,7 +117,7 @@ char			*check_tetriminos_file(char *filename)
 		res = join_lines(line, res);
 	}
 	close(fd);
-	if (++counters[0] % 5 != 0 || !check_bounds(&res[ft_strlen(res) - 16]))
+	if (++c[0] % 5 != 0 || !bounds(&res[ft_strlen(res) - 16]) || c[1] != 4)
 		return (NULL);
 	return (res);
 }
