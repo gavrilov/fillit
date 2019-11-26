@@ -6,7 +6,7 @@
 /*   By: rabduras <rabduras@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 12:41:37 by kgavrilo          #+#    #+#             */
-/*   Updated: 2019/11/22 19:17:28 by rabduras         ###   ########.fr       */
+/*   Updated: 2019/11/25 16:22:59 by rabduras         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,9 @@ static int		bounds(char *str)
 	{
 		if (str[i] == '#')
 		{
-			if (i != 0 && str[i - 1] == '#')
+			if (i != 0 && i % 4 != 0 && str[i - 1] == '#')
 				bounds++;
-			if (i + 1 < 16 && str[i + 1] == '#')
+			if (i + 1 < 16 && i % 4 != 3 && str[i + 1] == '#')
 				bounds++;
 			if (i >= 4 && str[i - 4] == '#')
 				bounds++;
