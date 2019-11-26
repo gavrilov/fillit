@@ -6,7 +6,7 @@
 /*   By: kgavrilo <kgavrilo@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 12:41:37 by kgavrilo          #+#    #+#             */
-/*   Updated: 2019/11/26 14:17:43 by kgavrilo         ###   ########.fr       */
+/*   Updated: 2019/11/26 14:34:20 by kgavrilo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,6 +131,7 @@ int				final_checker(char **square, int size)
 	int		abc[26];
 	int		i;
 	int		j;
+	int		z_find;
 
 	i = -1;
 	while (++i < 26)
@@ -138,19 +139,23 @@ int				final_checker(char **square, int size)
 	i = -1;
 	while (++i < size)
 	{
-		j = 0;
-		while (square[i][j] != '\0')
+		j = -1;
+		while (++j < size)
 		{
 			if (square[i][j] != '.' && square[i][j] < 'A' && square[i][j] > 'Z')
 				return (0);
 			if (square[i][j] >= 'A' && square[i][j] <= 'Z')
 				abc[square[i][j] - 65] += 1;
-			j++;
 		}
 	}
+	z_find = 0;
 	i = -1;
 	while (++i < 26)
-		if (abc[i] != 0 && abc[i] != 4)
+	{
+		if ((abc[i] != 0 && abc[i] != 4) || (abc[i] == 4 && z_find == 1))
 			return (0);
+		if (abc[i] == 0)
+			z_find = 1;
+	}
 	return (1);
 }
