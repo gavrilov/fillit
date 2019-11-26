@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tetriminos_solver.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rabduras <rabduras@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kgavrilo <kgavrilo@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/13 15:04:36 by rabduras          #+#    #+#             */
-/*   Updated: 2019/11/21 18:32:40 by rabduras         ###   ########.fr       */
+/*   Updated: 2019/11/26 14:12:21 by kgavrilo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,6 +121,8 @@ int			solve_tetriminos(t_tetriminos *tetriminos)
 		delete_square(square, size);
 		square = create_square(++size);
 	}
+	if (!(final_checker(square, size)))
+		return (0);
 	print_square(square, size);
 	delete_square(square, size);
 	return (1);
