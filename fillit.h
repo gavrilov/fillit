@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fillit.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kgavrilo <kgavrilo@student.42.us.org>      +#+  +:+       +#+        */
+/*   By: rabduras <rabduras@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/29 19:55:21 by kgavrilo          #+#    #+#             */
-/*   Updated: 2019/11/26 14:12:51 by kgavrilo         ###   ########.fr       */
+/*   Updated: 2019/11/26 16:39:57 by rabduras         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ char					*check_tetriminos_file(char *filename);
 char					**create_square(int size);
 void					delete_square(char **square, int size);
 void					delete_tetriminos(t_tetriminos *tetriminos);
-int						final_checker(char **square, int size);
 int						init_square_size(t_tetriminos *tetriminos);
 void					print_square(char **square, int size);
 t_tetriminos			*save_tetriminos(char *str);

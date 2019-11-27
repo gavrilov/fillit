@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tetriminos_checker.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kgavrilo <kgavrilo@student.42.us.org>      +#+  +:+       +#+        */
+/*   By: rabduras <rabduras@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 12:41:37 by kgavrilo          #+#    #+#             */
-/*   Updated: 2019/11/26 14:34:20 by kgavrilo         ###   ########.fr       */
+/*   Updated: 2019/11/26 16:39:20 by rabduras         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,42 +120,4 @@ char			*check_tetriminos_file(char *filename)
 	if (++c[0] % 5 != 0 || !bounds(&res[ft_strlen(res) - 16]) || c[1] != 4)
 		return (NULL);
 	return (res);
-}
-
-/*
-** Final checker of square
-*/
-
-int				final_checker(char **square, int size)
-{
-	int		abc[26];
-	int		i;
-	int		j;
-	int		z_find;
-
-	i = -1;
-	while (++i < 26)
-		abc[i] = 0;
-	i = -1;
-	while (++i < size)
-	{
-		j = -1;
-		while (++j < size)
-		{
-			if (square[i][j] != '.' && square[i][j] < 'A' && square[i][j] > 'Z')
-				return (0);
-			if (square[i][j] >= 'A' && square[i][j] <= 'Z')
-				abc[square[i][j] - 65] += 1;
-		}
-	}
-	z_find = 0;
-	i = -1;
-	while (++i < 26)
-	{
-		if ((abc[i] != 0 && abc[i] != 4) || (abc[i] == 4 && z_find == 1))
-			return (0);
-		if (abc[i] == 0)
-			z_find = 1;
-	}
-	return (1);
 }
