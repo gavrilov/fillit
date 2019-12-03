@@ -1,6 +1,8 @@
 # Fillit
 
  Fillit is not about recoding Tetris, even if it’s still a variant of this game. This program will take a file as parameter, which contains a list of Tetriminos, and arrange them in order to create the smallest square possible.
+ 
+`git clone --recurse-submodules git@github.com:gavrilov/fillit.git`
 
 ### The program
  The executable "fillit" takes only one parameter, a file which contains a list of Tetriminos to assemble. This file has a very specific format (see input sample).
