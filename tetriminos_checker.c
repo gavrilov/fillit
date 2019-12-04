@@ -6,7 +6,7 @@
 /*   By: kgavrilo <kgavrilo@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 12:41:37 by kgavrilo          #+#    #+#             */
-/*   Updated: 2019/12/03 15:44:01 by kgavrilo         ###   ########.fr       */
+/*   Updated: 2019/12/03 18:04:48 by kgavrilo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ static char		*join_lines(char *line, char *prevlines)
 	ft_strdel(&prevlines);
 	prevlines = ft_strjoin(temp, line);
 	ft_strdel(&temp);
+	ft_strdel(&line);
 	return (prevlines);
 }
 
